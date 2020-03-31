@@ -1,0 +1,83 @@
+body {
+    background-color: #c0392b;
+}
+
+#lead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 110px;
+    z-index: 1;
+}
+
+#top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 75%;
+    justify-content: space-around;
+    margin-left: 10%;
+    margin-bottom: 20px;
+}
+
+.headshot{
+    width: 210px;
+    border-radius: 10%;
+    border: 1px solid #ecf0f1;
+}
+
+#maininfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 35%;
+    color: #ecf0f1;
+}
+
+.nickname{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 55px;
+    margin-top: 25%;
+}
+
+#nick{
+    font-size: 44pt;
+    height: 100%;
+    font-family: Noodle;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#role {
+    height: 100%;
+    transform: scale(0.75);
+}
+
+.realname{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 40px;
+    width: 100%;
+    margin-top: 10px;
+    font-family: Gothic;
+    font-weight: 700;
+}
+
+#location, .realname p{
+    padding:0;
+    margin:0;
+    font-family: Gothic;
+    font-weight: 700;
+}
+
+#stats{
+    width: 75%;
+    height: 400px;
+}

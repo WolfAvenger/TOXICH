@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TOXICH | Team Members</title>
+    <link rel="stylesheet" href="../css/team.css">
+    <link rel="stylesheet" href="../css/particles.css">
+    <script src="../data/particles.js-master/particles.js"></script>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div id="nav">
+        <a href="/"><img src="../images/logo.png" alt="" id="logo"></a>
+        <ul id="navbar">
+            <li class="navelem" onclick='window.location.href="http://26.39.123.131:8080/team"'><a href="http://26.39.123.131:8080/team">Team</a></li>
+            <li class="navelem" onclick='window.location.href="http://26.39.123.131:8080/stats"'><a href="http://26.39.123.131:8080/stats">Stats</a></li>
+            <li class="navelem" onclick='window.location.href="http://26.39.123.131:8080/docs"'><a href="http://26.39.123.131:8080/docs">Docs</a></li>
+            <li class="navelem" onclick='window.location.href="http://26.39.123.131:8080/contacts"'><a href="http://26.39.123.131:8080/contacts">Contacts</a></li>
+        </ul>
+    </div>
+
+    <div id="main">
+        <% for(var elem of data) {%>
+            <div class="member">
+                <div class="player">
+                    <img src="<%= elem.iconURL %>" alt="">
+                    <div class="nick"><a href="http://26.39.123.131:8080/team/<%=elem.battletag.substr(0, elem.battletag.indexOf('-'))%>"><i><%= elem.battletag.substr(0, elem.battletag.indexOf('-')) %></i></a></div>
+                    <% if (elem.battletag.substr(0, elem.battletag.indexOf('-')) === 'КОПАТЫЧ' ||
+                        elem.battletag.substr(0, elem.battletag.indexOf('-')) === 'Ashaat') { %>
+                        <p class='cap'>✯</p>
+                    <% } %>
+                </div>
+                <div class="ratings">
+                    <% for (var key in elem.rank) { %>
+                        <div class="rating">
+                            <img src="<%= elem.rank[key].roleIcon %>" alt="">
+                            <p><%= elem.rank[key].sr %></p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+    <script>
+        particlesJS.load('particles-js','../data/particles.json', ()=>{});
+    </script>
+
+</body>
+</html>

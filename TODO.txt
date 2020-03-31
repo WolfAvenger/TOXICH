@@ -1,0 +1,4 @@
+1) Create snapshots of team Members
+2) Add 'em in Vk album
+3) Redact data in mongodb
+4) EJS IT!

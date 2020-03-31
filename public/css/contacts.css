@@ -1,0 +1,61 @@
+body {
+    background-color: #c0392b;
+}
+
+#lead {
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+.torrent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    -ms-align-items: center;
+    align-items: center;
+    color: #ecf0f1;
+    font-size: 20pt;
+    font-family: Gothic;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.torrent > p {
+    margin: 0 0 0 10px;
+    width: 500px;
+    color: #ecf0f1;
+    text-align: center;
+}
+
+.torrent > p > a {
+    transition: .25s;
+}
+
+img {
+    width: 100px;
+}
+
+#discord {
+    transform: scale(1.27);
+}
+
+.torrent > p > a:link,
+.torrent > p > a:visited,
+.torrent > p > a:active{
+    text-decoration: none;
+    color: #ecf0f1;
+}
+
+.torrent > p > a:hover{
+    color: #f1c40f;
+}
+
+.address {
+    color: #ecf0f1;
+    font-family: Gothic;
+    font-size: 10pt;
+}

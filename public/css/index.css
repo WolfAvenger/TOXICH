@@ -1,0 +1,127 @@
+@font-face {
+    src: url(../fonts/GOTHIC.TTF);
+    font-family: Gothic;
+}
+
+@font-face {
+    src: url(../fonts/Big_Noodle_Titling_Cyr_2.ttf);
+    font-family: Noodle;
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    /* Location of the image */
+    background-image: url(../images/bg2.jpg);
+
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+
+    /* Background image is fixed in the viewport so that it doesn't move when
+       the content's height is greater than the image's height */
+    background-attachment: fixed;
+
+    /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
+}
+
+a:visited, a:active, a:link{
+    text-decoration: none;
+}
+
+#nav{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #bdc3c7;
+    width: 100%;
+    border: 1px solid #bdc3c7;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+    z-index: 100;
+}
+
+#logo{
+    width: 85px;
+    height: auto;
+    background: #bdc3c7;
+    margin-left: 15px;
+}
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    height: 85px;
+}
+
+.navelem {
+    width: 120px;
+    height: 99%;
+    list-style-type: none;
+    font-family: Gothic;
+    font-weight: 800;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition: .25s;
+    margin: 0 10px;
+    border: 1px solid #bdc3c7;
+}
+
+.navelem a{
+    color: black;
+}
+
+.navelem:hover {
+    color: #bdc3c7;
+    background-color: #c0392b;
+    border-color: black;
+    box-shadow: 0 0 13px 0 #c0392b;
+    cursor: pointer;
+}
+
+.navelem:hover a{
+    color: #bdc3c7;
+}
+
+
+#main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 110px;
+    width: 80%;
+    align-self: center;
+    justify-content: space-around;
+    -ms-align-items: center;
+    align-items: center;
+    border: 2px solid #ecf0f1;
+    border-radius: 10px;
+}
+
+#main>.logo-main{
+    width: 30%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+#main>.desc{
+    width: 60%;
+    height: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-left: 1px solid #ecf0f1;
+    font-family: Gothic;
+    font-size: 14pt;
+    color: #ecf0f1;
+}

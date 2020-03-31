@@ -1,0 +1,181 @@
+@font-face {
+    src: url(../fonts/GOTHIC.TTF);
+    font-family: Gothic;
+}
+
+@font-face {
+    src: url(../fonts/Big_Noodle_Titling_Cyr_2.ttf);
+    font-family: Noodle;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #c0392b;
+    /* Location of the image */
+    background-image: url(../images/bg2.jpg);
+
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+
+    /* Background image is fixed in the viewport so that it doesn't move when
+       the content's height is greater than the image's height */
+    background-attachment: fixed;
+
+    /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
+}
+a:visited, a:active, a:link{
+    text-decoration: none;
+}
+
+#nav{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #bdc3c7;
+    width: 100%;
+    border: 1px solid #bdc3c7;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+}
+
+#logo{
+    width: 85px;
+    height: auto;
+    background: #bdc3c7;
+    margin-left: 15px;
+}
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    height: 85px;
+}
+
+.navelem {
+    width: 120px;
+    height: 99%;
+    list-style-type: none;
+    font-family: Gothic;
+    font-weight: 800;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition: .25s;
+    margin: 0 10px;
+    border: 1px solid #bdc3c7;
+}
+
+.navelem a{
+    color: black;
+}
+
+.navelem:hover {
+    color: #bdc3c7;
+    background-color: #c0392b;
+    border-color: black;
+    box-shadow: 0 0 13px 0 #c0392b;
+    cursor: pointer;
+}
+
+.navelem:hover a{
+    color: #bdc3c7;
+}
+
+#main {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    -ms-align-items: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.member {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Gothic;
+    width: 60%;
+    height: 90px;
+    font-weight: 700;
+    border: 1px solid #f1c40f;
+}
+
+.player > img {
+    width: 80px;
+}
+
+.player {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.nick {
+    font-family: Noodle;
+    font-size: 30pt;
+    margin-left: 5px;
+    color: #bdc3c7;
+}
+
+.ratings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating>p{
+    margin: 0;
+    padding: 0;
+    padding-left: 8px;
+    color: #bdc3c7;
+}
+
+.cap {
+    color: #f39c12;
+    font-family: Gothic;
+    padding-left: 15px;
+}
+
+.nick a:link,.nick a:active,.nick a:visited{
+    text-decoration: none;
+    color: #bdc3c7;
+}
+
+i:hover{
+    color: #f1c40f;
+    font-size: 36pt;
+}
+
+i {
+    transition: all .2s;
+}

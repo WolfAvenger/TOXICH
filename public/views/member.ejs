@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TOXICH | <%= nick %></title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/member.css">
+    <link rel="stylesheet" href="../css/particles.css">
+    <script src="https://kit.fontawesome.com/5991e93572.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="../data/particles.js-master/particles.js"></script>
+</head>
+<body onload='drawChart();'>
+    <div id="particles-js"></div>
+
+    <div id="nav">
+        <a href="/"><img src="../images/logo.png" alt="" id="logo"></a>
+        <ul id="navbar">
+            <li class="navelem" onclick='window.location.href="http://26.39.123.131:8080/team"'><a href="http://26.39.123.131:8080/team">Team</a></li>
+            <li class="navelem" onclick='window.location.href="http://26.39.123.131:8080/stats"'><a href="http://26.39.123.131:8080/stats">Stats</a></li>
+            <li class="navelem" onclick='window.location.href="http://26.39.123.131:8080/docs"'><a href="http://26.39.123.131:8080/docs">Docs</a></li>
+            <li class="navelem" onclick='window.location.href="http://26.39.123.131:8080/contacts"'><a href="http://26.39.123.131:8080/contacts">Contacts</a></li>
+        </ul>
+    </div>
+
+    <div id="lead">
+        <div id="top">
+            <img src="<%= headshot %>" alt="" class="headshot">
+            <div id="maininfo">
+                <div class="nickname">
+                    <p id="nick"><%= nick %></p>
+                    <% var r = role; %>
+                    <% if (role) { %>
+                        <img src="<%= data.rank[r].roleIcon %>" alt="" id="role">
+                    <% } %>
+                </div>
+                <div class="realname">
+                    <p id="name"><i class="fas fa-pager"></i> <%= name %></p>
+                    <p id="age"><i class="fas fa-calendar-alt"></i> <%= age %> years old</p>
+                </div>
+                <p id="location"><i class="fas fa-home"></i><%= ' '+location %></p>
+            </div>
+        </div>
+        <div id="stats">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        particlesJS.load('particles-js','../data/particles.json', ()=>{});
+    </script>
+
+    <script>
+        const colores = {
+            ana: '#718ab3',
+            ashe: '#b2beb5',
+            baptiste: '#C99029',
+            bastion: '#7c8ab3',
+            brigitte:	'#be736e',
+            dva:	'#ed93c7',
+            doomfist:	'#815049',
+            genji: '#97ef43',
+            hanzo: '#b9b48a',
+            hammond: '#81897A',
+            junkrat: '#ecbd53',
+            lucio: '#85c952',
+            mccree: '#ae595c',
+            mei: '#6faced',
+            mercy: '#ebe8bb',
+            moira: '#803c51',
+            orisa: '#468c43',
+            pharah: '#3e7dca',
+            reaper: '#7d3e51',
+            reinhardt: '#929da3',
+            roadhog: '#b68c52',
+            sigma: '#42AB8D',
+            soldier: '#697794',
+            sombra: '#7359ba',
+            symmetra: '#8ebccc',
+            torbjorn: '#c0726e',
+            tracer: '#d79342',
+            widowmaker: '#9e6aa8',
+            winston: '#a2a6bf',
+            zarya: '#e77eb6',
+            zenyatta: '#ede582'
+        }
+
+        function arrayHeroesColors(heroes){
+            var returnable = [];
+
+            for (var elem of heroes){
+                returnable.push(colores[elem.toString()]);
+            }
+
+            return returnable;
+        }
+
+        var labels = [];
+        var heroes = [];
+        var time = [];
+        var data = <%- JSON.stringify(data.mostPlayed.competitive); %>
+        for (var key in data) {
+            labels.push(key[0].toUpperCase()+key.slice(1));
+            heroes.push(key);
+            var timed = data[key].time.split(':');
+            if (timed.length == 1) {
+                time.push(Math.round((new Date(1970, 0, 1, 0, 0, timed[0]) - new Date(1970, 0, 1 ,0,0,0))/1000/60/60*10)/10);
+            }
+            else if (timed.length == 2) {
+                time.push(Math.round((new Date(1970, 0, 1, 0, timed[0], timed[1])- new Date(1970, 0, 1 ,0,0,0))/1000/60/60*10)/10);
+            }
+            else{
+                time.push(Math.round((new Date(1970, 0, 1, timed[0], timed[1], timed[2])- new Date(1970, 0, 1 ,0,0,0))/1000/60/60*10)/10);
+            }
+        }
+        if (labels.length>8) labels.length=8;
+
+        var colors = []; colors.length = labels.length;
+        for (var i=0; i<labels.length; i++){
+            colors[i] = `rgba(${Math.random()*64}, ${Math.random()*256}, ${Math.random()*256}, 1)`;
+        }
+
+        function drawChart(){
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'horizontalBar',
+
+            // The data for our dataset
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: time,
+                    backgroundColor: arrayHeroesColors(heroes), //"rgba(189, 195, 199,1.0)"
+                    hoverBackgroundColor: arrayHeroesColors(heroes)
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    fontColor: 'rgba(236, 240, 241,1.0)',
+                    fontFamily: 'Gothic',
+                    text: 'Time played competitive last season, hours'
+                },
+                scales:{
+                    xAxes: [{
+                        ticks: {
+                            fontColor: 'rgb(236, 240, 241)',
+                            fontFamily: 'Gothic'
+                        },
+                        gridLines: {
+                            color: "rgba(241, 196, 15,1.0)",
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            fontColor: 'rgb(236, 240, 241)',
+                            fontFamily: 'Gothic',
+                            callback: function(value, index,values){return "  "+value;},
+                            fontSize: 15
+                        },
+                        gridLines: {
+                            color: "rgba(241, 196, 15,1.0)",
+                        }
+                    }],
+                },
+                tooltips: {
+                    titleFontFamily: 'Gothic',
+                    bodyFontFamily: 'Gothic',
+                    callbacks: {
+                        label: function(item, data){
+                            return item.xLabel +' hours';
+                        }
+                    }
+                }
+            }
+        });
+        document.getElementById('stats').style.height = 275 + 'px';
+    }
+    </script>
+
+</body>
+</html>
